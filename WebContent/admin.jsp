@@ -66,7 +66,7 @@
             <% } %>
         </table>
 
-        <!-- Add New Product Form -->
+       
         <h2>Add New Product</h2>
         <form action="addproduct.jsp" method="post">
             <label for="productName">Product Name:</label>
@@ -84,7 +84,7 @@
             <input type="submit" value="Add Product">
         </form>
 
-        <!-- List of Products -->
+        
         <h2>List of Products</h2>
         <table border="1">
             <tr>
@@ -108,13 +108,12 @@
                     <td><%= productRs.getString("productDesc") %></td>
                     <td><%= productRs.getInt("categoryId") %></td>
                     <td>
-                       <!-- Button to updateproduct.jsp with the product ID -->
+                      
 <form action="updateproduct.jsp" method="get">
     <input type="hidden" name="productId" value="<%= productRs.getInt("productId") %>">
     <input type="submit" value="Update">
 </form>
 
-<!-- Button to deleteproduct.jsp with the product ID -->
 <form action="deleteproduct.jsp" method="post">
     <input type="hidden" name="productId" value="<%= productRs.getInt("productId") %>">
     <input type="submit" value="Delete">
@@ -133,17 +132,7 @@
 }
 %>
 
-<!-- Add JavaScript functions for update and delete actions -->
-<script>
-    function updateProduct(productId) {
-        // Implement update logic using AJAX or redirect to update page
-        alert("Update product with ID: " + productId);
-    }
 
-    function deleteProduct(productId) {
-        // Implement delete logic using AJAX or redirect to delete page
-        alert("Delete product with ID: " + productId);
-    }
-</script>
+
 </body>
 </html>

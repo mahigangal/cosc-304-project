@@ -177,7 +177,7 @@
                             <a class="add-to-cart-btn" href="addcart.jsp?id=<%= productId %>&name=<%= URLEncoder.encode(productName, "UTF-8") %>&price=<%= productPrice %>">Add to Cart</a>
                             <a class="continue-shopping-btn" href="listprod.jsp">Continue Shopping</a>
                             
-                            <!-- Display Reviews -->
+                           
                             <div class="reviews-container">
                                 <h3>Product Reviews</h3>
                                 <% 
@@ -201,7 +201,7 @@
                                 %>
                             </div>
 
-                            <!-- Add Review Form -->
+                            
                             <div class="review-form">
                                 <h3>Add Your Review</h3>
                                 <form method="post" action="addreview.jsp">

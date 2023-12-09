@@ -26,7 +26,7 @@
             int categoryId = productRs.getInt("categoryId");
 
 %>
-            <!-- Update Product Form -->
+           
             <h2>Update Product</h2>
             <form action="processupdate.jsp" method="post">
                 <label for="productName">Product Name:</label>
@@ -41,7 +41,6 @@
                 <label for="categoryId">Category Id:</label>
                 <input id="categoryId" name="categoryId" value="<%= categoryId %>" required><br>
 
-                <!-- Include the product ID as a hidden field -->
                 <input type="hidden" name="productId" value="<%= productId %>">
 
                 <input type="submit" value="Update Product">

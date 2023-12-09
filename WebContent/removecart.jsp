@@ -13,11 +13,11 @@ if (productList != null && productList.containsKey(productId)) {
     // Remove the selected product from the cart
     productList.remove(productId);
 
-    // Update the session attribute
+   
     session.setAttribute("productList", productList);
 }
 
-// Redirect back to the shopping cart page
+
 response.sendRedirect("showcart.jsp");
 
 %>
