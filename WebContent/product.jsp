@@ -20,8 +20,13 @@
             color: white;
             text-align: center;
             padding: 20px;
-            font-size: 24px;
+            font-size: 36px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-title {
+            font-family: 'Impact', sans-serif;
+            margin-bottom: 10px;
         }
 
         .container {
@@ -39,7 +44,8 @@
 
         .product-image {
             max-width: 100%;
-            height: auto;
+            height: 200px; /* Set a fixed height for all images */
+            object-fit: cover; /* Maintain aspect ratio and cover the container */
             border-radius: 8px;
             margin-bottom: 20px;
         }
@@ -65,14 +71,14 @@
 <body>
 
 <div class="header-ribbon">
-    <div class="header-title">Welcome to KenzoCoffer's Grocery Store</div>
+    <div class="header-title">
+        <%@ include file="header.jsp" %>
+    </div>
 </div>
-
-<%@ include file="header.jsp" %>
 
 <div class="container">
     <div class="product-details">
-        <%
+        <% 
             // Get product ID to search for
             String productId = request.getParameter("id");
 

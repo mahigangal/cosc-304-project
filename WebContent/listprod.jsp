@@ -3,6 +3,7 @@
 <%@ include file="jdbc.jsp" %>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>KenzoCoffer's Grocery Store</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -14,12 +15,27 @@
             background-color: #f8f9fa;
         }
 
+        .navbar {
+            background-color: #4CAF50;
+            overflow: hidden;
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+        }
+
         .header-ribbon {
             position: relative;
             background-color: #4CAF50;
             color: white;
             text-align: center;
-            padding: 45px;
+            padding: 40px;
             font-size: 35px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             display: flex;
@@ -42,8 +58,10 @@
         }
 
         .links {
-            text-align: center;
-            background-color: #3E71B7;
+            background-color: #4CAF50; /* Change to green */
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
             padding: 10px;
         }
 
@@ -72,7 +90,7 @@
 
         input[type="submit"],
         input[type="reset"] {
-            background-color: #3E71B7;
+            background-color: #4CAF50; /* Change to green */
             color: #fff;
             cursor: pointer;
         }
@@ -113,7 +131,7 @@
 
         .product-price {
             font-weight: bold;
-            color: #3E71B7;
+            color: #4CAF50; /* Change to green */
         }
 
         .add-to-cart-link {
@@ -123,7 +141,14 @@
         }
     </style>
 </head>
+
 <body>
+    <div class="navbar">
+        <a href="index.jsp">New Main Page</a>
+        <a href="customer.jsp">Customer Info</a>
+        <a href="logout.jsp">Log out</a>
+    </div>
+
     <div class="header-ribbon">
         <div class="header-title">Welcome to KenzoCoffer's Grocery Store</div>
         <div class="user-info">
@@ -135,11 +160,6 @@
                 }
             %>
         </div>
-    </div>
-
-    <div class="links">
-        <a href="listorder.jsp">List All Orders</a>
-        <a href="index.jsp">New Main Page</a>
     </div>
 
     <form method="get" action="listprod.jsp">
