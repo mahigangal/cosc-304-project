@@ -101,6 +101,7 @@
         <a href="customer.jsp">Customer Info</a>
         <a href="useraccount.jsp">User Account</a>
         <a href="admin.jsp">Administrators</a>
+        <a href="https://youtu.be/W1grZX0GyEs" target="_blank">Website Walkthrough</a>
         <a href="logout.jsp">Log out</a>
     </div>
 
@@ -114,9 +115,7 @@
                 out.println("<h3>Signed in as: " + userName + "</h3>");
         %>
 
-        <h4><a href="ship.jsp?orderId=1">Test Ship orderId=1</a></h4>
-
-        <h4><a href="ship.jsp?orderId=3">Test Ship orderId=3</a></h4>
+       
     </div>
 </body>
 
