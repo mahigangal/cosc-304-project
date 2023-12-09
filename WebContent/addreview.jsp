@@ -4,7 +4,7 @@
 
 <%
     String productId = request.getParameter("productId");
-    int rating = request.getParameter("rating");
+    String rating = request.getParameter("rating");
     String comment = request.getParameter("comment");
 
     if (productId != null && rating != null && comment != null) {
@@ -13,7 +13,7 @@
 
             String insertReviewSql = "INSERT INTO review (reviewRating, reviewComment, productId) VALUES (?, ?, ?)";
             try (PreparedStatement insertReviewStmt = con.prepareStatement(insertReviewSql)) {
-                insertReviewStmt.setInt(1, rating);
+                insertReviewStmt.setString(1, rating);
                 insertReviewStmt.setString(2, comment);
                 insertReviewStmt.setString(3, productId);
 
