@@ -218,12 +218,12 @@ INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId,
 INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 20, 3, 10);
 
 -- New SQL DDL for lab 8
-UPDATE Product SET productImageURL = 'img/1.jpg' WHERE productId = 1;
-UPDATE Product SET productImageURL = 'img/2.jpg' WHERE ProductId = 2;
-UPDATE Product SET productImageURL = 'img/3.jpg' WHERE ProductId = 3;
-UPDATE Product SET productImageURL = 'img/4.jpeg' WHERE ProductId = 4;
-UPDATE Product SET productImageURL = 'img/5.jpg' WHERE ProductId = 5;
-UPDATE Product SET productImageURL = 'img/6.jpg' WHERE ProductId = 6;
+UPDATE product SET productImageURL = 'img/1.jpg' WHERE productId = 1;
+UPDATE product SET productImageURL = 'img/2.jpg' WHERE ProductId = 2;
+UPDATE product SET productImageURL = 'img/3.jpg' WHERE ProductId = 3;
+UPDATE product SET productImageURL = 'img/4.jpeg' WHERE ProductId = 4;
+UPDATE product SET productImageURL = 'img/5.jpg' WHERE ProductId = 5;
+UPDATE product SET productImageURL = 'img/6.jpg' WHERE ProductId = 6;
 UPDATE Product SET productImageURL = 'img/7.jpg' WHERE ProductId = 7;
 UPDATE Product SET productImageURL = 'img/8.jpg' WHERE ProductId = 8;
 UPDATE Product SET productImageURL = 'img/9.jpg' WHERE ProductId = 9;
