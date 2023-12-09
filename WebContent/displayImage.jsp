@@ -19,16 +19,16 @@ try {
 // Check if the image is from the img folder or the database
 if (idVal == 0) {
     // For images from the img folder
-    String imgFileName = "1_a.jpg"; // Change this to the desired image file name
+    String imgFileName = "1.jpg"; // Change this to the desired image file name
     String imgPath = getServletContext().getRealPath("/img/" + imgFileName);
 
     try (InputStream inputStream = new FileInputStream(imgPath);
          OutputStream outputStream = response.getOutputStream()) {
 
         int bytesRead;
-        byte[] buffer = new byte[8192];
+        byte[] buffer = new byte[9192];
 
-        while ((bytesRead = inputStream.read(buffer, 0, 8192)) != -1) {
+        while ((bytesRead = inputStream.read(buffer, 0, 9192)) != -1) {
             outputStream.write(buffer, 0, bytesRead);
         }
     } catch (IOException e) {
@@ -45,7 +45,7 @@ if (idVal == 0) {
             stmt.setInt(1, idVal);
             ResultSet rst = stmt.executeQuery();
 
-            int BUFFER_SIZE = 10000;
+            int BUFFER_SIZE = 20000;
             byte[] data = new byte[BUFFER_SIZE];
 
             if (rst.next()) {

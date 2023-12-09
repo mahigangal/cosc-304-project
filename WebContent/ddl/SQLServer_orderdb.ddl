@@ -84,9 +84,9 @@ CREATE TABLE orderproduct (
     price               DECIMAL(10,2),  
     PRIMARY KEY (orderId, productId),
     FOREIGN KEY (orderId) REFERENCES ordersummary(orderId)
-        ON UPDATE CASCADE ON DELETE NO ACTION,
+        ON UPDATE CASCADE ON DELETE CASCADE,
     FOREIGN KEY (productId) REFERENCES product(productId)
-        ON UPDATE CASCADE ON DELETE NO ACTION
+        ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE incart (
@@ -124,9 +124,10 @@ CREATE TABLE productinventory (
     price               DECIMAL(10,2),  
     PRIMARY KEY (productId, warehouseId),   
     FOREIGN KEY (productId) REFERENCES product(productId)
-        ON UPDATE CASCADE ON DELETE NO ACTION,
+        ON UPDATE CASCADE ON DELETE cascade
+        ,
     FOREIGN KEY (warehouseId) REFERENCES warehouse(warehouseId)
-        ON UPDATE CASCADE ON DELETE NO ACTION
+        ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE review (
@@ -150,16 +151,17 @@ INSERT INTO category(categoryName) VALUES ('Produce');
 INSERT INTO category(categoryName) VALUES ('Confections');
 INSERT INTO category(categoryName) VALUES ('Grains/Cereals');
 
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Organic Cherry Watermelon Drink', 1, '10 boxes x 20 bags',18.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Orgaic Mixed Greens juice',1,'24 - 12 oz bottles',19.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Organic Chai', 1, '10 boxes x 20 bags',180.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Organic Mixed Greens juice',1,'24 - 12 oz bottles',19.00);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Organic Sesame',2,'12 - 550 ml bottles',10.00);
-INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Oraganic Mustard',2,'48 - 6 oz jars',22.00);
+INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Organic Mustard',2,'48 - 6 oz jars',22.00);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Organic Plain Yogurt',3,'1 kg pkg.',21.00);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Organic Spread',3,'1 kg pkg.',25.00);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Organic Pasta',4,'40 - 100 g pkgs.',40.00);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Organic Fruit Slice',4,'24 - 500 g pkgs',100.00);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Organic Peanut butter',5,'32 - 500 g boxes',17.00);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Organic Cotton Candy',5,'10 - 1 kg boxes',39.00);
+
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Organic Oats',6,'1 kg pkg.',62.50);
 INSERT product(productName, categoryId, productDesc, productPrice) VALUES ('Organic Cereal',6,'1 kg pkg.',42.50);
 
@@ -174,7 +176,8 @@ INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (6,
 INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (7, 1, 1, 40);
 INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (8, 1, 0, 100);
 INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (9, 1, 2, 17);
-INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (10, 1, 3, 39);
+INSERT INTO productInventory(productId, warehouseId, quantity, price) VALUES (10, 1, 3, 39);
+
 
 INSERT INTO customer (firstName, lastName, email, phonenum, address, city, state, postalCode, country, userid, password) VALUES ('Arnold', 'Anderson', 'a.anderson@gmail.com', '204-111-2222', '103 AnyWhere Street', 'Winnipeg', 'MB', 'R3X 45T', 'Canada', 'arnold' , '304Arnold!');
 INSERT INTO customer (firstName, lastName, email, phonenum, address, city, state, postalCode, country, userid, password) VALUES ('Bobby', 'Brown', 'bobby.brown@hotmail.ca', '572-342-8911', '222 Bush Avenue', 'Boston', 'MA', '22222', 'United States', 'bobby' , '304Bobby!');
@@ -215,10 +218,15 @@ INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId,
 INSERT INTO orderproduct (orderId, productId, quantity, price) VALUES (@orderId, 20, 3, 10);
 
 -- New SQL DDL for lab 8
-UPDATE Product SET productImageURL = 'img/1.jpg' WHERE ProductId = 1;
+UPDATE Product SET productImageURL = 'img/1.jpg' WHERE productId = 1;
 UPDATE Product SET productImageURL = 'img/2.jpg' WHERE ProductId = 2;
 UPDATE Product SET productImageURL = 'img/3.jpg' WHERE ProductId = 3;
-UPDATE Product SET productImageURL = 'img/4.jpg' WHERE ProductId = 4;
+UPDATE Product SET productImageURL = 'img/4.jpeg' WHERE ProductId = 4;
 UPDATE Product SET productImageURL = 'img/5.jpg' WHERE ProductId = 5;
+UPDATE Product SET productImageURL = 'img/6.jpg' WHERE ProductId = 6;
+UPDATE Product SET productImageURL = 'img/7.jpg' WHERE ProductId = 7;
+UPDATE Product SET productImageURL = 'img/8.jpg' WHERE ProductId = 8;
+UPDATE Product SET productImageURL = 'img/9.jpg' WHERE ProductId = 9;
+UPDATE Product SET productImageURL = 'img/10.jpg' WHERE ProductId =10;
 
 -- Loads image data for product 1

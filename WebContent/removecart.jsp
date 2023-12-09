@@ -1,4 +1,5 @@
 <%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.ArrayList" %>
 <%
 
 // Get the product ID to remove from the request
