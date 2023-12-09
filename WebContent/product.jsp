@@ -5,7 +5,7 @@
 <html>
 <head>
     <title>KenzoCoffer's Grocery Store - Product Information</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -24,9 +24,27 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .header-title {
-            font-family: 'Impact', sans-serif;
-            margin-bottom: 10px;
+        .navbar {
+            background-color: #4CAF50;
+            overflow: hidden;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar a {
+            float: left;
+            display: block;
+            color: #ffffff;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
         }
 
         .container {
@@ -44,8 +62,8 @@
 
         .product-image {
             max-width: 100%;
-            height: 200px; /* Set a fixed height for all images */
-            object-fit: cover; /* Maintain aspect ratio and cover the container */
+            height: 200px;
+            object-fit: cover;
             border-radius: 8px;
             margin-bottom: 20px;
         }
@@ -66,14 +84,57 @@
         .continue-shopping-btn:hover {
             background-color: #29568F;
         }
+
+        .reviews-container {
+            margin-top: 20px;
+        }
+
+        .review-form {
+            margin-top: 20px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+
+        .review-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        .submit-review-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #3E71B7;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .submit-review-btn:hover {
+            background-color: #29568F;
+        }
+
+        .review-item {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
 
 <div class="header-ribbon">
-    <div class="header-title">
-        <%@ include file="header.jsp" %>
-    </div>
+    <div class="header-title">Welcome to KenzoCoffer's Grocery Store</div>
+</div>
+
+<div class="navbar">
+    <a href="login.jsp">Login</a>
+    <a href="listprod.jsp">Product List</a>
+    <a href="customer.jsp">Customer Info</a>
+    <a href="index.jsp">Main Page</a>
+    <a href="logout.jsp">Log out</a>
 </div>
 
 <div class="container">
@@ -115,6 +176,51 @@
                             </table>
                             <a class="add-to-cart-btn" href="addcart.jsp?id=<%= productId %>&name=<%= URLEncoder.encode(productName, "UTF-8") %>&price=<%= productPrice %>">Add to Cart</a>
                             <a class="continue-shopping-btn" href="listprod.jsp">Continue Shopping</a>
+                            
+                            <!-- Display Reviews -->
+                            <div class="reviews-container">
+                                <h3>Product Reviews</h3>
+                                <% 
+                                    // Retrieve and display product reviews
+                                    String reviewSql = "SELECT * FROM review WHERE productId = ?";
+                                    try (PreparedStatement reviewStmt = con.prepareStatement(reviewSql)) {
+                                        reviewStmt.setString(1, productId);
+                                        ResultSet reviewRs = reviewStmt.executeQuery();
+
+                                        while (reviewRs.next()) {
+                                            int reviewRating = reviewRs.getInt("reviewRating");
+                                            String reviewComment = reviewRs.getString("reviewComment");
+                                %>
+                                            <div class="review-item">
+                                                <p><strong>Rating:</strong> <%= reviewRating %> stars</p>
+                                                <p><strong>Comment:</strong> <%= reviewComment %></p>
+                                            </div>
+                                <%
+                                        }
+                                    }
+                                %>
+                            </div>
+
+                            <!-- Add Review Form -->
+                            <div class="review-form">
+                                <h3>Add Your Review</h3>
+                                <form method="post" action="addreview.jsp">
+                                    <input type="hidden" name="productId" value="<%= productId %>">
+                                    <label for="rating">Rating:</label>
+                                    <select name="rating" id="rating">
+                                        <option value="1">1 star</option>
+                                        <option value="2">2 stars</option>
+                                        <option value="3">3 stars</option>
+                                        <option value="4">4 stars</option>
+                                        <option value="5">5 stars</option>
+                                    </select>
+                                    <br>
+                                    <label for="comment">Comment:</label>
+                                    <textarea name="comment" id="comment" rows="4" cols="50"></textarea>
+                                    <br>
+                                    <input type="submit" value="Submit Review" class="submit-review-btn">
+                                </form>
+                            </div>
         <%
                         } else {
                             out.println("<p>Product not found</p>");
